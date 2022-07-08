@@ -56,17 +56,108 @@ class TaskView extends GetView<TaskController> {
               ),
               ),
           Expanded(child: Container(
-            padding: EdgeInsets.all(50),
-            margin: !context.isPhone? EdgeInsets.all(10): EdgeInsets.all(0),
-            decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: !context.isPhone? BorderRadius.circular(50): BorderRadius.circular(20)),
+         padding: !context.isPhone? EdgeInsets.all(50): EdgeInsets.all(0),
+              margin: !context.isPhone? EdgeInsets.all(10): EdgeInsets.all(0),
+              decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: !context.isPhone? BorderRadius.circular(50): BorderRadius.circular(20)
+              ),
+              child:  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:[ 
+                Text('My Task', style: TextStyle(color: AppColors.primaryText, fontSize: 30,
+                                     ),
+                                     ),
+                                          SizedBox(),
+                     Expanded(
+                    child: ListView.builder(
+                      itemCount: 8,
+                      clipBehavior: Clip.antiAlias
+                      ,scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index){
+                    return     Container(
+                     //  width: 400,
+                     height: 200,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                    color: AppColors.cardBg, ),
+                    margin: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      Row(
+         children:[
+                      ClipRRect(borderRadius: BorderRadius.circular(25),
+             child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+             foregroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/2/20/20220121%E2%80%94Tzuyu_Campaign_Film%2C_Pearlygates_x_Twice_2022.jpg',
+             ),
+             ),
+             ),
+             ClipRRect(borderRadius: BorderRadius.circular(25),
+             child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+             foregroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/2/20/20220121%E2%80%94Tzuyu_Campaign_Film%2C_Pearlygates_x_Twice_2022.jpg',
+             ),
+             ),
+             ),
+             Spacer(),
+             Container(
+               height: 25,
+               width: 80,
+               color: AppColors.primaryBg,
+               child: Center(child: Text('100 %', style: TextStyle(color: AppColors.primaryText,
+               ),
+               ),
+               ),
+             ),
+             
+         ],
+         ),
+         Spacer(),
+          Container(
+               height: 25,
+               width: 80,
+               color: AppColors.primaryBg,
+               child: Center(child: Text('10 / 10 Task', style: TextStyle(color: AppColors.primaryText,
+               ),
+               ),
+               ),
+             ),  
+             Text('Pemograman Mobile', style: TextStyle(color: AppColors.primaryText,fontSize: 20),
+             ),
+             Text('Deadline 2 hari lagi', style: TextStyle(color: AppColors.primaryText,fontSize: 15),
+             ),
+             ]),
+                    );
+                
+                  },
+                
+                  ),
+                  ),
+              ],
+              ),
           ),
           ),
           
           ]),
         ),
       ],
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment(0.95,0.95),
+        child: FloatingActionButton.extended(onPressed: (){
+          Get.bottomSheet(Container(
+            margin: !context.isPhone? EdgeInsets.zero :  EdgeInsets.only(left:150,right: 150),
+            height: Get.height,
+          decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular (20), topRight: Radius.circular (20)),
+          color: Colors.white
+          ),
+          ),
+          );
+        }, 
+        label: Text('Add Task'), icon: Icon(Icons.add,
+        ),
+        ),
       ),
     );
   }

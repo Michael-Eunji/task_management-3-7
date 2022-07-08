@@ -38,10 +38,10 @@ class MyFriends extends StatelessWidget {
                       SizedBox(height: 400,child: GridView.builder(
                         shrinkWrap: true,
                         itemCount: 8,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 20, mainAxisSpacing: 20), itemBuilder: (context,index){
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:context.isPhone? 2 : 3, crossAxisSpacing: 20, mainAxisSpacing: 20), itemBuilder: (context,index){
                          return Column(children: [
                             ClipRRect(borderRadius: BorderRadius.circular(100),
-                 child: CircleAvatar(backgroundColor: Colors.amber, radius: 60,
+                 child: CircleAvatar(backgroundColor: Colors.amber, radius: 75,
                  foregroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/2/20/20220121%E2%80%94Tzuyu_Campaign_Film%2C_Pearlygates_x_Twice_2022.jpg',
                  ),
                  ),
